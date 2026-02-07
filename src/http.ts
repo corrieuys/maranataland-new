@@ -10,8 +10,6 @@ export const authLink = (c: Context<AppEnv>) => {
   return `<a class="hover:underline" href="${signInUrl}">Teken in</a>`;
 };
 
-export const isHtmx = (c: Context<AppEnv>) =>
-  c.req.header("HX-Request") === "true";
 
 export const cacheKey = (c: Context<AppEnv>, scope: string) =>
   `${scope}:${c.req.url}`;

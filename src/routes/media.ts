@@ -2,10 +2,9 @@ import { Context, Hono } from "hono";
 import type { AppEnv, MediaType } from "../types";
 import { countMedia, getMediaByUid, listMediaPaged } from "../db";
 import { withCache } from "../cache";
-import { authLink, cacheKey, isHtmx } from "../http";
+import { authLink, cacheKey } from "../http";
 import {
   renderDetailPage,
-  renderMediaListContent,
   renderListPage,
   renderNotFound,
 } from "../templates";
@@ -39,15 +38,6 @@ const renderMediaList = async (
     category,
   });
 
-  if (isHtmx(c)) {
-    return c.html(
-      await renderMediaListContent(c, {
-        items,
-        pagination,
-        layout: type === "audio" ? "list" : "grid",
-      })
-    );
-  }
   return withCache(c, cacheKey(c, typePath), async () =>
     c.html(
       await renderListPage(c, {
@@ -82,7 +72,7 @@ const buildPagination = (input: {
     const classes = disabled
       ? "pointer-events-none opacity-40"
       : "hover:underline";
-    return `<a class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 ${classes}" href="${href}" hx-get="${href}" hx-target="#media-list" hx-swap="outerHTML" hx-push-url="true">${label}</a>`;
+    return `<a class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 ${classes}" href="${href}" hx-get="${href}" hx-target="#media-list" hx-select="#media-list" hx-swap="outerHTML" hx-push-url="true">${label}</a>`;
   };
 
   const prev = input.page > 1 ? link(input.page - 1, "← Vorige", false) : link(1, "← Vorige", true);
@@ -97,7 +87,7 @@ const buildPagination = (input: {
     const href = qs ? `${input.basePath}?${qs}` : input.basePath;
     const isCurrent = p === input.page;
     pageLinks.push(
-      `<a class="inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold ${isCurrent ? "bg-teal-700 text-white" : "text-teal-700 hover:bg-teal-50"}" href="${href}" hx-get="${href}" hx-target="#media-list" hx-swap="outerHTML" hx-push-url="true">${p}</a>`
+      `<a class="inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold ${isCurrent ? "bg-teal-700 text-white" : "text-teal-700 hover:bg-teal-50"}" href="${href}" hx-get="${href}" hx-target="#media-list" hx-select="#media-list" hx-swap="outerHTML" hx-push-url="true">${p}</a>`
     );
   }
 
