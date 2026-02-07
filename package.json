@@ -1,0 +1,33 @@
+{
+	"name": "maranataland-new",
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy --minify",
+		"db:generate": "drizzle-kit generate && node ./scripts/drizzle-to-wrangler.mjs",
+		"db:seed:generate": "node ./scripts/build-seed.mjs",
+		"d1:migrate": "wrangler d1 migrations apply maranataland-new",
+		"d1:migrate:local": "wrangler d1 migrations apply maranataland-new --local",
+		"d1:migrate:remote": "wrangler d1 migrations apply maranataland-new --remote",
+		"d1:seed": "wrangler d1 execute maranataland-new --file=./data/seed.sql",
+		"d1:seed:local": "wrangler d1 execute maranataland-new --local --file=./data/seed.sql",
+		"d1:seed:remote": "wrangler d1 execute maranataland-new --remote --file=./data/seed.sql",
+		"lint": "eslint . --ext .ts",
+		"typecheck": "tsc --noEmit",
+		"cf-typegen": "wrangler types --env-interface CloudflareBindings"
+	},
+	"dependencies": {
+		"@clerk/backend": "^2.30.1",
+		"drizzle-orm": "^0.44.2",
+		"hono": "^4.11.8"
+	},
+	"devDependencies": {
+		"@types/node": "^25.2.1",
+		"@typescript-eslint/eslint-plugin": "^8.54.0",
+		"@typescript-eslint/parser": "^8.54.0",
+		"drizzle-kit": "^0.31.4",
+		"eslint": "^9.39.2",
+		"typescript": "^5.9.3",
+		"wrangler": "^4.63.0"
+	}
+}

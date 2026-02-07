@@ -1,0 +1,29 @@
+<section class="py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-between gap-4 mb-4">
+      <div>
+        <h2 class="text-xl font-bold">Nuutste videos</h2>
+        <p class="text-sm text-slate-600">Vars toevoegings vir kyktyd.</p>
+      </div>
+      <a class="text-sm font-semibold text-teal-700 hover:underline" href="/videos">Alle videos →</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{latest_videos}}
+    </div>
+  </div>
+</section>
+
+<section class="pb-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-between gap-4 mb-4">
+      <div>
+        <h2 class="text-xl font-bold">Nuutste stories</h2>
+        <p class="text-sm text-slate-600">Luister na die jongste vertellings.</p>
+      </div>
+      <a class="text-sm font-semibold text-teal-700 hover:underline" href="/audio">Alle stories →</a>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{latest_audio}}
+    </div>
+  </div>
+</section>

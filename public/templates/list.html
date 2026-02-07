@@ -1,0 +1,20 @@
+<section class="py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <h1 class="text-2xl font-bold mb-4">{{title}}</h1>
+    <div class="flex flex-wrap gap-3 items-center mb-6">
+      <label class="text-sm font-medium text-slate-600">
+        Kategorie
+        <select class="ml-2 rounded-md border border-slate-300 px-3 py-2 text-sm"
+          name="category"
+          hx-get="{{type_path}}"
+          hx-target="#media-list"
+          hx-swap="outerHTML"
+          hx-include="[name=category]"
+          hx-vals='{"page":1}'>
+          {{category_options}}
+        </select>
+      </label>
+    </div>
+    {{media_list}}
+  </div>
+</section>

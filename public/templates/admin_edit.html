@@ -1,0 +1,35 @@
+<section class="py-10">
+  <div class="max-w-4xl mx-auto px-6">
+    <h1 class="text-2xl font-bold mb-4">Wysig Media</h1>
+    <form method="post" action="/admin/edit/{{uid}}" class="space-y-4">
+      <div class="grid sm:grid-cols-3 gap-3">
+        <input name="uid" value="{{uid}}" readonly class="rounded-md border border-slate-300 px-3 py-2 text-sm bg-slate-100" />
+        <select name="type" class="rounded-md border border-slate-300 px-3 py-2 text-sm">
+          <option value="video"{{type_video}}>video</option>
+          <option value="audio"{{type_audio}}>audio</option>
+        </select>
+        <input name="title" value="{{title}}" required class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <input name="stream_url" value="{{stream_url}}" required class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <input name="thumbnail_url" value="{{thumbnail_url}}" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <input name="category" value="{{category}}" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <input name="number" value="{{number}}" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 items-center">
+        <input name="keywords" value="{{keywords}}" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <div class="flex gap-4 text-sm text-slate-700">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="featured" {{featured_checked}} /> featured
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="published" {{published_checked}} /> published
+          </label>
+        </div>
+      </div>
+      <button class="rounded-lg bg-teal-700 text-white font-semibold px-4 py-2" type="submit">Save changes</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<article class="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md">
+  <a href="{{link}}" class="flex items-start gap-4">
+    <div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-slate-200">
+      <img src="{{thumb}}" alt="{{title}}" class="h-full w-full object-cover" loading="lazy" />
+      <div class="absolute inset-0 flex items-center justify-center bg-slate-900/50 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center justify-between gap-2">
+        <h3 class="truncate text-sm font-semibold">{{title}}</h3>
+        {{featured_badge}}
+      </div>
+      <p class="mt-1 line-clamp-2 text-sm text-slate-600">{{description}}</p>
+    </div>
+  </a>
+</article>

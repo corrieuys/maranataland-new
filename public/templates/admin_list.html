@@ -1,0 +1,29 @@
+<section class="py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <h1 class="text-2xl font-bold mb-4">Admin</h1>
+    <div class="flex gap-3 mb-4 flex-wrap">
+      <form method="post" action="/admin/import">
+        <button class="rounded-lg bg-teal-700 text-white font-semibold px-4 py-2" type="submit">
+          Voer media in (vooraf gelaai JSON)
+        </button>
+      </form>
+      <a class="rounded-lg bg-slate-900 text-white font-semibold px-4 py-2" href="/admin/new">Nuwe item</a>
+    </div>
+    <div class="rounded-xl border border-slate-200 bg-white overflow-hidden">
+      <table class="min-w-full text-sm">
+        <thead class="bg-slate-100 text-slate-600">
+          <tr>
+            <th class="text-left px-4 py-3">uid</th>
+            <th class="text-left px-4 py-3">type</th>
+            <th class="text-left px-4 py-3">titel</th>
+            <th class="text-left px-4 py-3">gepubliseer</th>
+            <th class="text-left px-4 py-3"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200">
+          {{rows}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

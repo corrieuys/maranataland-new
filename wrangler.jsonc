@@ -1,0 +1,66 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "maranataland-new",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-02-05",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "maranataland-new",
+			"database_id": "e9e485b4-f009-43cf-893b-0dff99c452d4",
+			"migrations_dir": "migrations"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "CACHE_BUCKET",
+			"bucket_name": "maranataland-cache"
+		}
+	],
+	"vars": {
+		"CACHE_BACKEND": "r2",
+		"CACHE_TTL_SECONDS": "120",
+		"TEMPLATE_CACHE_TTL_SECONDS": "300",
+		"CLERK_PUBLISHABLE_KEY": "pk_test_replace",
+		"CLERK_SECRET_KEY": "sk_test_replace",
+		"CLERK_SIGN_IN_URL": "https://clerk.com/sign-in",
+		"CACHE_VERSION": "v1"
+	},
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "./public"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	]
+	/**
+	 * Smart Placement
+	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
+	 */
+	// "placement": {  "mode": "smart" }
+	/**
+	 * Bindings
+	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
+	 * databases, object storage, AI inference, real-time communication and more.
+	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 */
+	/**
+	 * Environment Variables
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
+	 * Note: Use secrets to store sensitive data.
+	 * https://developers.cloudflare.com/workers/configuration/secrets/
+	 */
+	// "vars": {  "MY_VARIABLE": "production_value" }
+	/**
+	 * Service Bindings (communicate between multiple Workers)
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+	 */
+	// "services": [  {   "binding": "MY_SERVICE",   "service": "my-service"  } ]
+}

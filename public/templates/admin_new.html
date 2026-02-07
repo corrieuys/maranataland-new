@@ -1,0 +1,35 @@
+<section class="py-10">
+  <div class="max-w-4xl mx-auto px-6">
+    <h1 class="text-2xl font-bold mb-4">Nuwe Media</h1>
+    <form method="post" action="/admin/new" class="space-y-4">
+      <div class="grid sm:grid-cols-3 gap-3">
+        <input name="uid" placeholder="uid (unique)" required class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <select name="type" class="rounded-md border border-slate-300 px-3 py-2 text-sm">
+          <option value="video">video</option>
+          <option value="audio">audio</option>
+        </select>
+        <input name="title" placeholder="title" required class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <input name="stream_url" placeholder="YouTube url" required class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <input name="thumbnail_url" placeholder="thumbnail url (optional)" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <input name="category" placeholder="category (story/film)" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <input name="number" placeholder="number" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3 items-center">
+        <input name="keywords" placeholder="keywords" class="rounded-md border border-slate-300 px-3 py-2 text-sm" />
+        <div class="flex gap-4 text-sm text-slate-700">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="featured" /> featured
+          </label>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="published" checked /> published
+          </label>
+        </div>
+      </div>
+      <button class="rounded-lg bg-teal-700 text-white font-semibold px-4 py-2" type="submit">Save</button>
+    </form>
+  </div>
+</section>

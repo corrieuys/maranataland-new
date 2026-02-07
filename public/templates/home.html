@@ -1,0 +1,41 @@
+<section class="relative h-[min(700px,85vh)] overflow-hidden bg-[rgb(11_85_78)] text-white">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 h-full w-full">
+    <picture>
+      <source media="(min-width: 1024px)" srcset="/char_horizontal.webp" />
+      <source media="(min-width: 640px)" srcset="/char_vertical_1024.webp" />
+      <img
+        src="/char_vertical.webp"
+        alt=""
+        class="absolute right-0 bottom-0 h-full w-auto max-w-[85vw] sm:max-w-[70vw] lg:max-w-[60vw]"
+        loading="eager"
+      />
+    </picture>
+  </div>
+  <div class="relative z-10 mx-auto flex h-full max-w-6xl px-6 sm:px-10 py-14 sm:py-16">
+    <div class="mr-auto flex w-[62%] max-w-[16rem] sm:w-auto sm:max-w-sm md:max-w-md lg:max-w-xl flex-col justify-center pl-4 pr-6 sm:pl-6 sm:pr-10 lg:pl-8 lg:pr-12">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">Stories en musiek vir kinders</h1>
+      <p class="text-base md:text-lg text-white/90">
+        Kyk en luister na Oom Karoolus en Lente se stories – nou aanlyn met YouTube streams.
+      </p>
+      <div class="mt-5 flex gap-3 flex-wrap">
+        <a class="inline-flex items-center justify-center rounded-lg bg-white text-teal-700 font-semibold px-4 py-2" href="/videos">Kyk 'n video</a>
+        <a class="inline-flex items-center justify-center rounded-lg bg-slate-900 text-white font-semibold px-4 py-2" href="/audio">Luister stories</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-10">
+  <div
+    class="max-w-6xl mx-auto px-6"
+    hx-get="/_fragments/home-latest"
+    hx-trigger="load"
+    hx-swap="outerHTML"
+  >
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="h-36 rounded-xl bg-slate-200 animate-pulse"></div>
+      <div class="h-36 rounded-xl bg-slate-200 animate-pulse"></div>
+      <div class="h-36 rounded-xl bg-slate-200 animate-pulse"></div>
+      <div class="h-36 rounded-xl bg-slate-200 animate-pulse"></div>
+    </div>
+  </div>
+</section>
