@@ -10,6 +10,17 @@ import { registerPublicRoutes } from "./routes/public";
 const app = new Hono<AppEnv>();
 
 app.use("*", authMiddleware());
+app.use("*", async (c, next) => {
+  await next();
+  if (c.req.path.startsWith("/admin")) {
+    return;
+  }
+  const existing = c.res.headers.get("Cache-Control");
+  if (!existing) {
+    const ttl = Number(c.env.CACHE_TTL_SECONDS ?? 120);
+    c.res.headers.set("Cache-Control", `public, max-age=${ttl}`);
+  }
+});
 
 registerPublicRoutes(app);
 registerMediaRoutes(app);

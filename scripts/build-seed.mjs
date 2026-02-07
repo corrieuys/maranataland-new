@@ -93,11 +93,9 @@ const valuesSql = rows
   .join(",\n");
 
 const output = `-- Auto-generated from data/videoImport.json and data/audioImport.json
-BEGIN TRANSACTION;
 INSERT INTO media (${columns.join(", ")})
 VALUES
 ${valuesSql};
-COMMIT;
 `;
 
 await writeFile(outPath, output, "utf8");
