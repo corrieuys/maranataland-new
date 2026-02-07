@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import type { AppEnv, MediaImportItem } from "../types";
+import type { AppEnv } from "../types";
 import { requireAdmin } from "../auth";
-import { getMediaByUid, importFromJson, listMedia, upsertMedia } from "../db";
+import { getMediaByUid, listMedia, upsertMedia } from "../db";
 import { authLink, parseMediaFormData } from "../http";
 import {
   renderAdminEdit,
@@ -9,8 +9,6 @@ import {
   renderAdminNew,
   renderNotFound,
 } from "../templates";
-import videoImport from "../../data/videoImport.json";
-import audioImport from "../../data/audioImport.json";
 import { ROUTES } from "./paths";
 
 export function registerAdminRoutes(app: Hono<AppEnv>) {
@@ -38,13 +36,6 @@ export function registerAdminRoutes(app: Hono<AppEnv>) {
     return c.html(await renderAdminEdit(c, item, authLink(c)));
   });
 
-  app.post(ROUTES.adminImport, async (c) => {
-    const denied = requireAdmin(c);
-    if (denied) return denied;
-    await importFromJson(c.env.DB, videoImport as MediaImportItem[], "video");
-    await importFromJson(c.env.DB, audioImport as MediaImportItem[], "audio");
-    return c.redirect(ROUTES.admin);
-  });
 
   app.post(ROUTES.adminNew, async (c) => {
     const denied = requireAdmin(c);
